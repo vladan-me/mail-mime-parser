@@ -9,7 +9,7 @@ namespace ZBateson\MailMimeParser\Header\Consumer;
 use ZBateson\MailMimeParser\Header\Consumer\ConsumerService;
 use ZBateson\MailMimeParser\Header\Part\HeaderPartFactory;
 use ZBateson\MailMimeParser\Header\Part\MimeLiteralPart;
-use SplFixedArray;
+use ArrayIterator;
 use Iterator;
 use NoRewindIterator;
 
@@ -123,7 +123,7 @@ abstract class AbstractConsumer
     private function parseRawValue($value)
     {
         $tokens = $this->splitRawValue($value);
-        return $this->parseTokensIntoParts(new NoRewindIterator(SplFixedArray::fromArray($tokens)));
+        return $this->parseTokensIntoParts(new NoRewindIterator(new ArrayIterator($tokens)));
     }
     
     /**
